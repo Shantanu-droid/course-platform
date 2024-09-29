@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -121,6 +122,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+MEDIA_URL = 'media/'
+LOCAl_CDN = BASE_DIR.parent.parent / "local-cdn"
+MEDIA_ROOT = LOCAl_CDN / "media"
+
+
+CLOUDINARY_CLOUD_NAME=config('CLOUDINARY_CLOUD_NAME',default='djtctwsnw')
+CLOUDINARY_API_KEY=config('CLOUDINARY_API_KEY',default='393598378481642')
+CLOUDINARY_API_SECRET=config('CLOUDINARY_API_SECRET')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
